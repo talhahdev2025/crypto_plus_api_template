@@ -50,9 +50,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     fontWeight: .w500,
                   ),
                   backgroundColor: AppColors.white,
-                  onPress: () => ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text('Button Pressed'))),
+
+                  // TODO: add route to create account here
+                  onPress: () => context.pushNamed(AppRoutes.createAccount),
                 ),
               ),
             ],
