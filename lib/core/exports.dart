@@ -13,6 +13,10 @@ export 'package:crypto_plus/core/constants/app_text_styles.dart';
 
 //widgets
 export 'package:crypto_plus/core/widgets/custom_button.dart';
+export 'package:crypto_plus/core/widgets/custom_app_bar.dart';
+export 'package:crypto_plus/core/widgets/section_header.dart';
+export 'package:crypto_plus/core/widgets/custom_text_field.dart';
+
 
 //routes
 

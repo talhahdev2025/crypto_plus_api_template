@@ -30,7 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   color: AppColors.white,
                 ),
               ),
-
+        
               AppSpacing.vXxl,
               Text(
                 'Start trading new with \n Forex & Crypto Trading:',
@@ -50,8 +50,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     fontWeight: .w500,
                   ),
                   backgroundColor: AppColors.white,
-
-                  // TODO: add route to create account here
+        
                   onPress: () => context.pushNamed(AppRoutes.createAccount),
                 ),
               ),
