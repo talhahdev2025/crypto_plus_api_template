@@ -11,6 +11,12 @@ class AppTextStyles {
     color: AppColors.textPrimary,
     letterSpacing: -0.5,
   );
+    static const TextStyle displayMedium = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: AppColors.textPrimary,
+    letterSpacing: -0.5,
+  );
 
   static const TextStyle headlineLarge = TextStyle(
     fontSize: 24,

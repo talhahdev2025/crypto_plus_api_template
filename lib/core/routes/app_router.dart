@@ -13,6 +13,7 @@ class AppRouter {
         path: AppRoutes.welcome,
         builder: (context, state) => WelcomeScreen(),
       ),
+      
     ],
   );
 }

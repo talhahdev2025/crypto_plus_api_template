@@ -11,30 +11,52 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primary,
       body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              'Forex & ',
-              style: AppTextStyles.displayLarge.copyWith(
-                color: AppColors.white,
+        child: Container(
+          alignment: .center,
+          margin: AppInsets.dialog,
+          padding: AppInsets.dialog,
+          child: Column(
+            crossAxisAlignment: .center,
+            mainAxisAlignment: .center,
+            children: [
+              Text(
+                'FOREX & \nCRYPTO \nTRADING',
+                textAlign: .center,
+                style: AppTextStyles.displayLarge.copyWith(
+                  fontSize: 48,
+                  height: 0,
+                  color: AppColors.white,
+                ),
               ),
-            ),
-            Text('Crypto', style: AppTextStyles.displayLarge),
-            Text('Trading', style: AppTextStyles.displayLarge),
-            AppSpacing.vMd,
-            Text(
-              'Start trading new with \n Forex & Crypto Trading:',
-              style: AppTextStyles.displayLarge,
-            ),
-            AppSpacing.vMd,
-            CustomButton(
-              text: 'Register Now',
-              onPress: () => ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text('Button Pressed'))),
-            ),
-          ],
+
+              AppSpacing.vXxl,
+              Text(
+                'Start trading new with \n Forex & Crypto Trading:',
+                textAlign: .center,
+                style: AppTextStyles.displayMedium.copyWith(
+                  color: AppColors.white,
+                  fontWeight: .normal,
+                ),
+              ),
+              AppSpacing.vXxl,
+              Container(
+                width: double.infinity,
+                child: CustomButton(
+                  text: 'Register Now',
+                  textStyle: AppTextStyles.bodyLarge.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: .w500,
+                  ),
+                  backgroundColor: AppColors.white,
+                  onPress: () => ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('Button Pressed'))),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

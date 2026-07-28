@@ -6,10 +6,12 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPress,
     this.backgroundColor = AppColors.primary,
+    this.textStyle = AppTextStyles.bodyLarge,
   });
   final String text;
   final VoidCallback onPress;
   final Color backgroundColor;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,9 @@ class CustomButton extends StatelessWidget {
         backgroundColor: backgroundColor,
         alignment: .center,
         padding: AppInsets.button,
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.large),
       ),
-      child: Text(text),
+      child: Text(text, style: textStyle),
     );
   }
 }
