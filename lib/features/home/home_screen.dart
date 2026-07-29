@@ -1,4 +1,6 @@
 import 'package:crypto_plus/core/exports.dart';
+import 'package:crypto_plus/features/home/data/models/coin.dart';
+import 'package:crypto_plus/features/home/data/repository/home_repository.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,6 +10,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final respository = HomeRepository();
+  late Future<List<Coin>> coins;
+
+  @override
+  void initState() {
+    super.initState();
+    coins = respository.getCoins();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -175,37 +186,61 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 //listView of topStock
-                SliverList.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: AppInsets.listItem,
-                      margin: AppInsets.listItem,
-                      decoration: BoxDecoration(
-                        color: AppColors.background,
-                        borderRadius: AppRadius.large,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: .spaceBetween,
-                        children: [
-                          CircleAvatar(foregroundColor: AppColors.primary),
-                          AppSpacing.hLg,
-                          Text('Google', style: AppTextStyles.bodyLarge),
-                          Spacer(),
-                          Column(
-                            crossAxisAlignment: .end,
+                FutureBuilder(
+                  future: coins,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return SliverToBoxAdapter(child: CircularProgressIndicator());
+                    }
+                    if (snapshot.hasError) {
+                      return SliverToBoxAdapter(child: Text('${snapshot.error}'));
+                    }
+                    final data = snapshot.data!;
+                
+                    return SliverList.builder(
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          // height: 120,
+                          padding: AppInsets.listItem,
+                          margin: AppInsets.listItem,
+                          decoration: BoxDecoration(
+                            color: AppColors.background,
+                            borderRadius: AppRadius.large,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: .spaceBetween,
                             children: [
-                              Text('\$904.00', style: AppTextStyles.titleLarge),
-                              Text(
-                                '-%1.80',
-                                style: AppTextStyles.titleMedium.copyWith(
-                                  color: AppColors.error,
+                              CircleAvatar(
+                                foregroundImage: NetworkImage(
+                                  data[index].image,
                                 ),
+                              ),
+                              AppSpacing.hLg,
+                              Text(
+                                data[index].name,
+                                style: AppTextStyles.bodyLarge,
+                              ),
+                              Spacer(),
+                              Column(
+                                crossAxisAlignment: .end,
+                                children: [
+                                  Text(
+                                    data[index].currentPrice.toString(),
+                                    style: AppTextStyles.titleLarge,
+                                  ),
+                                  Text(
+                                    '-%1.80',
+                                    style: AppTextStyles.titleMedium.copyWith(
+                                      color: AppColors.error,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     );
                   },
                 ),
