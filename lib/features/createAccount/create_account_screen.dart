@@ -79,8 +79,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         color: AppColors.white,
                         fontWeight: .bold,
                       ),
-                      // TODO: navigate to home screen
-                      onPress: () {},
+                      onPress: () => context.goNamed(AppRoutes.home),
                     ),
                   ),
                   AppSpacing.vXxxl,

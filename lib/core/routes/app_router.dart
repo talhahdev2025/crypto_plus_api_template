@@ -1,4 +1,5 @@
 import 'package:crypto_plus/core/exports.dart';
+import 'package:crypto_plus/features/home/home_screen.dart';
 
 class AppRouter {
   static final GoRouter routers = GoRouter(
@@ -20,6 +21,12 @@ class AppRouter {
         path: AppRoutes.createAccountPath,
         name: AppRoutes.createAccount,
         builder: (context, state) => CreateAccountScreen(),
+      ),
+      //home
+      GoRoute(
+        path: AppRoutes.homePath,
+        name: AppRoutes.home,
+        builder: (context, state) => HomeScreen(),
       ),
     ],
   );
