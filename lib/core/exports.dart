@@ -27,6 +27,11 @@ export 'package:crypto_plus/core/routes/app_routes.dart';
 export 'package:crypto_plus/features/splash/splash_screen.dart';
 export 'package:crypto_plus/features/welcome/welcome_screen.dart';
 export 'package:crypto_plus/features/createAccount/create_account_screen.dart';
+export 'package:crypto_plus/features/navigation/main_navigation_screen.dart';
+export 'package:crypto_plus/features/home/home_screen.dart';
+export 'package:crypto_plus/features/watchlist/watchlist_screen.dart';
+
+
 
 
 //go router
