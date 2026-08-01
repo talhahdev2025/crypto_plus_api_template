@@ -9,12 +9,14 @@ class CustomTextField extends StatefulWidget {
     this.nextFocusNode,
     this.focusNode,
     this.textInputAction,
+    this.prefixIcon,
     this.controller,
     this.obscureText,
     this.autoFocus,
   });
   final String hint;
   final IconData? suffixIcon;
+  final IconData? prefixIcon;
   final TextInputType? keyBoardType;
   final TextInputAction? textInputAction;
   final FocusNode? focusNode;
@@ -39,6 +41,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       decoration: InputDecoration(
         hint: Text(widget.hint),
         filled: true,
+        prefixIcon: (widget.prefixIcon != null)
+            ? Icon(widget.prefixIcon)
+            : null,
         hintStyle: TextStyle(color: AppColors.textHint),
         fillColor: AppColors.white,
         focusColor: AppColors.primary,

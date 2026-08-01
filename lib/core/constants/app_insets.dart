@@ -89,6 +89,6 @@ class AppInsets {
 
   static const EdgeInsets listItem = EdgeInsets.symmetric(
     horizontal: AppSizes.lg,
-    vertical: AppSizes.md,
+    vertical: AppSizes.sm,
   );
 }

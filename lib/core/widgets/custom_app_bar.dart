@@ -9,6 +9,9 @@ class CustomAppBar extends StatelessWidget {
       title: Text(title, style: AppTextStyles.headlineMedium),
       centerTitle: true,
       leading: Icon(Icons.menu),
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      backgroundColor: AppColors.transparent,
       leadingWidth: 0,
     );
   }
