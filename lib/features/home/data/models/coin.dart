@@ -5,13 +5,15 @@ class Coin {
   final String symbol;
   final String name;
   final String image;
-  final int currentPrice;
+  final double currentPrice;
+  final double priceChangePercentage24h;
   Coin({
     required this.id,
     required this.symbol,
     required this.name,
     required this.image,
     required this.currentPrice,
+    required this.priceChangePercentage24h,
   });
 
   Coin copyWith({
@@ -19,14 +21,17 @@ class Coin {
     String? symbol,
     String? name,
     String? image,
-    int? current_price,
+    double? currentPrice,
+    double? priceChangePercentage24h,
   }) {
     return Coin(
       id: id ?? this.id,
       symbol: symbol ?? this.symbol,
       name: name ?? this.name,
       image: image ?? this.image,
-      currentPrice: current_price ?? this.currentPrice,
+      priceChangePercentage24h:
+          priceChangePercentage24h ?? this.priceChangePercentage24h,
+      currentPrice: currentPrice ?? this.currentPrice,
     );
   }
 
@@ -37,6 +42,7 @@ class Coin {
       'name': name,
       'image': image,
       'current_price': currentPrice,
+      'price_change_percentage_24h': priceChangePercentage24h,
     };
   }
 
@@ -46,7 +52,8 @@ class Coin {
       symbol: map['symbol'] as String,
       name: map['name'] as String,
       image: map['image'] as String,
-      currentPrice: map['current_price'].toInt() as int,
+      currentPrice: map['current_price'],
+      priceChangePercentage24h: map['price_change_percentage_24h'],
     );
   }
 
@@ -57,7 +64,7 @@ class Coin {
 
   @override
   String toString() {
-    return 'Coin(id: $id, symbol: $symbol, name: $name, image: $image, current_price: $currentPrice)';
+    return 'Coin(id: $id, symbol: $symbol, name: $name, image: $image, current_price: $currentPrice, price_change_percentage_24h: $priceChangePercentage24h)';
   }
 
   @override
@@ -68,7 +75,8 @@ class Coin {
         other.symbol == symbol &&
         other.name == name &&
         other.image == image &&
-        other.currentPrice == currentPrice;
+        other.currentPrice == currentPrice &&
+        other.priceChangePercentage24h == priceChangePercentage24h;
   }
 
   @override
@@ -77,6 +85,7 @@ class Coin {
         symbol.hashCode ^
         name.hashCode ^
         image.hashCode ^
-        currentPrice.hashCode;
+        currentPrice.hashCode ^
+        priceChangePercentage24h.hashCode;
   }
 }

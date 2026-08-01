@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: AppInsets.screen,
                     child: SectionHeader(
-                      headline: 'Top Stocks',
+                      headline: 'Top Coins',
                       actionText: 'See all',
                     ),
                   ),
@@ -230,13 +230,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: .end,
                                 children: [
                                   Text(
-                                    data[index].currentPrice.toString(),
+                                    '\$${data[index].currentPrice}',
                                     style: AppTextStyles.titleLarge,
                                   ),
                                   Text(
-                                    '-%1.80',
+                                    '${data[index].priceChangePercentage24h} %',
                                     style: AppTextStyles.titleMedium.copyWith(
-                                      color: AppColors.error,
+                                      color:
+                                          (data[index]
+                                                  .priceChangePercentage24h >
+                                              0)
+                                          ? AppColors.success
+                                          : AppColors.error,
                                     ),
                                   ),
                                 ],
