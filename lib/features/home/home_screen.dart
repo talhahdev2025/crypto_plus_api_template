@@ -190,13 +190,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: coins,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SliverToBoxAdapter(child: CircularProgressIndicator());
+                      return SliverToBoxAdapter(
+                        child: Center(child: CircularProgressIndicator()),
+                      );
                     }
                     if (snapshot.hasError) {
-                      return SliverToBoxAdapter(child: Text('${snapshot.error}'));
+                      return SliverToBoxAdapter(
+                        child: Text('${snapshot.error}'),
+                      );
                     }
                     final data = snapshot.data!;
-                
+
                     return SliverList.builder(
                       itemCount: data.length,
                       itemBuilder: (context, index) {
