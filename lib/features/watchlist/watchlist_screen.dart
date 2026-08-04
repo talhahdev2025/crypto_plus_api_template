@@ -32,6 +32,7 @@ class WatchlistScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // TabBar,
             CoinsList(coins: coins),
           ],
         ),

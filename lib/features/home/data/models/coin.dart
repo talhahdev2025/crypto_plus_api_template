@@ -5,7 +5,7 @@ class Coin {
   final String symbol;
   final String name;
   final String image;
-  final double currentPrice;
+  final num currentPrice;
   final double priceChangePercentage24h;
   Coin({
     required this.id,
@@ -21,7 +21,7 @@ class Coin {
     String? symbol,
     String? name,
     String? image,
-    double? currentPrice,
+    num? currentPrice,
     double? priceChangePercentage24h,
   }) {
     return Coin(
@@ -52,8 +52,8 @@ class Coin {
       symbol: map['symbol'] as String,
       name: map['name'] as String,
       image: map['image'] as String,
-      currentPrice: map['current_price'],
-      priceChangePercentage24h: map['price_change_percentage_24h'],
+      currentPrice: map['current_price'] as num,
+      priceChangePercentage24h: map['price_change_percentage_24h'] as double,
     );
   }
 
